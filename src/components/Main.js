@@ -37,15 +37,16 @@ export default function Main() {
     return(
         <main>
             <div className='searchContainer'>
-                <input className='searchName' type='text' value={searchText} placeholder='Søk etter matvare' onChange={handleSearch} />               
-                <select name='matvarekjede' id='matvarekjede' onChange={handleSelectMatvarekjede}>
-                    <option value={''}>Alle matvarekjeder</option>
-                    {/* <option value={''} disabled selected>Matvarekjede</option> */}
-                    <option value={'Meny'}>Meny</option>
-                    <option value={'SPAR'}>Spar</option>
-                    <option value={'Joker'}>Joker</option>
-                </select>
+                <i className='fa fa-search'></i>
+                <input className='searchName' type='text' value={searchText} placeholder='Søk...' onChange={handleSearch} />
             </div>
+            <select name='matvarekjede' id='matvarekjede' onChange={handleSelectMatvarekjede}>
+                <option value={''}>Alle matvarekjeder</option>
+                {/* <option value={''} disabled selected>Matvarekjede</option> */}
+                <option value={'Meny'}>Meny</option>
+                <option value={'SPAR'}>Spar</option>
+                <option value={'Joker'}>Joker</option>
+            </select>
             <div className='matvareContainer'>
                 {/* {matvarekjede === '' ?
                     data.filter(data => data.nam)
