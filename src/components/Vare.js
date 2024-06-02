@@ -1,5 +1,5 @@
-export default function Vare() {
+export default function Vare({ valgtVare }) {
     return(
-        <h1>Vare</h1>
+        <h1>{valgtVare}</h1>
     )
 }
