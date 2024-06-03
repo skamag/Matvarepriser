@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import Layout from './components/Layout'
-import Header from './components/Header'
+import Layout from './components/Layout'
+// import Header from './components/Header'
 import Main from './components/Main'
 import Vare from './components/Vare'
 import './App.css';
@@ -24,12 +24,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
         <Routes>
-          <Route path='/'>
+          <Route path='/' element={<Layout />}>
             <Route index element={<Main data={data} setData={setData} valgtVare={valgtVare} setValgtVare={setValgtVare} />} />
-            <Route path='/vare' element={<Vare valgtVare={valgtVare} />} />
+            <Route path='/vare' element={<Vare data={data} valgtVare={valgtVare} />} />
           </Route>
         </Routes>
       </BrowserRouter>
