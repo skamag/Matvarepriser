@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-// import Header from './components/Header'
 import Main from './components/Main'
 import Vare from './components/Vare'
 import './App.css';

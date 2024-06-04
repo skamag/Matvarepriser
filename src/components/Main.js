@@ -22,7 +22,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
     }
 
     return(
-        <main>
+        <main className='gridContainer'>
             <div className='searchContainer'>
                 <i className='fa fa-search'></i>
                 <input className='searchName' type='text' value={searchText} placeholder='Søk...' onChange={handleSearch} />
@@ -33,6 +33,14 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                 <option value={'Meny'}>Meny</option>
                 <option value={'SPAR'}>Spar</option>
                 <option value={'Joker'}>Joker</option>
+            </select>
+            <select name='sortering' id='sortering'>
+                <option value={''}>Sorter</option>
+                {/* <option value={''} disabled selected>Matvarekjede</option> */}
+                <option value={'Laveste pris'}>Laveste pris</option>
+                <option value={'Høyeste pris'}>Høyeste pris</option>
+                <option value={'Merkevare'}>Merkevare</option>
+                <option value={'Matvarekjede'}>Matvarekjede</option>
             </select>
             <div className='matvareContainer'>
                 {/* {matvarekjede === '' ?

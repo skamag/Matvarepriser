@@ -1,3 +1,37 @@
-h1{
-    background-color: blue;
+.valgtVareContainer{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    width: 90%;
+    margin: 100px auto;
+}
+.flex-20gap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.vareImage{
+    max-height: 200px;
+}
+.priserContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.storeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.storeLogoContainer{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.storeLogo{
+    box-shadow: 0 0 8px grey;
 }

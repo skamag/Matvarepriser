@@ -1,3 +1,6 @@
+.gridContainer{
+    padding: 30px;
+}
 .searchContainer{
     padding: 10px 20px;
     background-color: rgb(245, 245, 245);
@@ -6,7 +9,7 @@
     margin: 0 auto;
     border-radius: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
@@ -37,6 +40,12 @@ input:focus{
     text-decoration: none;
     color: black;
 }
+.card:hover{
+    box-shadow: 0px 0px 8px rgb(100, 100, 100);
+}
+.card:focus{
+    box-shadow: 0px 0px 8px rgb(160, 160, 160);
+}
 .article{
     height: 100%;
     display: flex;
@@ -61,4 +70,19 @@ img{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+@media screen and (max-width: 800px){
+    .matvareContainer{
+        width: 90%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 400px){
+    .searchContainer{
+        width: 90%;
+    }
+    .matvareContainer{
+        width: 90%;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 }
