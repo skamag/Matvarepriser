@@ -5,7 +5,7 @@
     width: 90%;
     margin: 100px auto;
 }
-.flex-20gap{
+.valgtVareHeader{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,4 +34,7 @@
 }
 .storeLogo{
     box-shadow: 0 0 8px grey;
+}
+.bold{
+    font-weight: bold;
 }
