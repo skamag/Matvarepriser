@@ -5,6 +5,7 @@ import './main.css'
 export default function Main({ data, valgtVare, setValgtVare }) {    
     const [searchText, setSearchText] = useState('')
     const [matvarekjede, setMatvarekjede] = useState('')
+    const [sorting, setSorting] = useState('')
 
     const handleSearch = event => {
         let text = event.target.value
@@ -16,8 +17,13 @@ export default function Main({ data, valgtVare, setValgtVare }) {
         setMatvarekjede(kjede)
     }
 
+    const handleSort = event => {
+        let valgtSort = event.target.value
+
+        setSorting(valgtSort)
+    }
+
     const handleClick = (data) => {
-        console.log(valgtVare)
         setValgtVare(data.name)
     }
 
@@ -34,20 +40,20 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                 <option value={'SPAR'}>Spar</option>
                 <option value={'Joker'}>Joker</option>
             </select>
-            <select name='sortering' id='sortering'>
+            <select name='sortering' id='sortering' onChange={handleSort}>
                 <option value={''}>Sorter</option>
                 {/* <option value={''} disabled selected>Matvarekjede</option> */}
-                <option value={'Laveste pris'}>Laveste pris</option>
-                <option value={'Høyeste pris'}>Høyeste pris</option>
-                <option value={'Merkevare'}>Merkevare</option>
-                <option value={'Matvarekjede'}>Matvarekjede</option>
+                <option value={'lavestePris'}>Laveste pris</option>
+                <option value={'hoyestePris'}>Høyeste pris</option>
+                <option value={'merkevare'}>Merkevare</option>
+                <option value={'matvarekjede'}>Matvarekjede</option>
             </select>
             <div className='matvareContainer'>
                 {/* {matvarekjede === '' ?
                     data.filter(data => data.nam)
                 } */}
 
-                {data ?
+                {data /* && searchText !== '' */ ?
                     data.data.filter(
                         matvarekjede !== '' ? data => data.name.toLowerCase().includes(searchText.toLowerCase()) && data.store.name === matvarekjede
                         : data => ((data.name.toLowerCase()).includes(searchText.toLowerCase())
@@ -58,7 +64,15 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                         index === self.findIndex((t) => (
                           t.place === value.place && t.name === value.name
                         ))
-                    ).map(filteredData => (
+                    )
+                    .sort(items => (
+                        sorting === 'lavestePris' ? console.log('laveste pris') 
+                        : sorting === 'hoyestePris' ? console.log('høyeste pris')
+                        : sorting === 'merkevare' ? console.log('matvare')
+                        : sorting === 'matvarekjede' ? console.log('matvarekjede')
+                        : console.log('no sorting')
+                    ))
+                    .map(filteredData => (
                         <Link to='/vare' className='card' key={filteredData.id}>
                             <article className='article' onClick={() => handleClick(filteredData)}>
                                 <div className='imgContainer'>
