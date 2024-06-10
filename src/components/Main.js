@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './main.css'
+// import './main.css'
+import './gptStyling.css'
 
 export default function Main({ data, valgtVare, setValgtVare }) {    
     const [searchText, setSearchText] = useState('')
