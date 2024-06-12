@@ -4,8 +4,9 @@ export default function Layout() {
     return(
         <div className="appContainer">
             <Link to='/' className="link">
-                <div>
-                    <h1>Header</h1>
+                <div className="headerContainer">
+                    <h1 className="header">Matvarepriser</h1>
+                    {/* <p>Finn dagligvarer og sammenlign priser fra ulike dagligvarekjeder.</p> */}
                 </div>
             </Link>
             <Outlet />
