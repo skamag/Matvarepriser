@@ -31,25 +31,34 @@ export default function Main({ data, valgtVare, setValgtVare }) {
     return(
         <main className='gridContainer'>
             <div className='searchContainer'>
-                <div className='searchBarContainer'>
-                    <i className='fa fa-search'></i>
-                    <input className='searchName' type='text' value={searchText} placeholder='Søk...' onChange={handleSearch} />
+                <div className='searchLeft'>
+                    <div className='searchBarContainer'>
+                        <i className='fa fa-search'></i>
+                        <input className='searchName' type='text' value={searchText} placeholder='Søk...' onChange={handleSearch} />
+                    </div>
                 </div>
-                <select name='matvarekjede' id='matvarekjede' onChange={handleSelectMatvarekjede}>
-                    <option value={''}>Alle matvarekjeder</option>
-                    {/* <option value={''} disabled selected>Matvarekjede</option> */}
-                    <option value={'Meny'}>Meny</option>
-                    <option value={'SPAR'}>Spar</option>
-                    <option value={'Joker'}>Joker</option>
-                </select>
-                <select name='sortering' id='sortering' onChange={handleSort}>
-                    <option value={''}>Sorter</option>
-                    {/* <option value={''} disabled selected>Matvarekjede</option> */}
-                    <option value={'lavestePris'}>Laveste pris</option>
-                    <option value={'hoyestePris'}>Høyeste pris</option>
-                    <option value={'merkevare'}>Merkevare</option>
-                    <option value={'matvarekjede'}>Matvarekjede</option>
-                </select>
+                <div className='searchRight'>
+                    <select name='matvarekjede' id='matvarekjede' onChange={handleSelectMatvarekjede}>
+                        <option value={''}>Alle matvarekjeder</option>
+                        {/* <option value={''} disabled selected>Matvarekjede</option> */}
+                        <option value={'Meny'}>Meny</option>
+                        <option value={'SPAR'}>Spar</option>
+                        <option value={'Joker'}>Joker</option>
+                    </select>
+                    <select name='sortering' id='sortering' onChange={handleSort}>
+                        <option value={''}>Sorter</option>
+                        {/* <option value={''} disabled selected>Matvarekjede</option> */}
+                        <option value={'lavestePris'}>Laveste pris</option>
+                        <option value={'hoyestePris'}>Høyeste pris</option>
+                        <option value={'merkevare'}>Merkevare</option>
+                        <option value={'matvarekjede'}>Matvarekjede</option>
+                    </select>
+                    <div id='filter'>
+                        <div className='square'></div>
+                        <div className='square'></div>
+                        <div className='square'></div>
+                    </div>
+                </div>
             </div>
             <div className='matvareContainer'>
                 {/* {matvarekjede === '' ?

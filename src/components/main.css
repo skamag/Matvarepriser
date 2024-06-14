@@ -1,3 +1,7 @@
+/* select {
+    -webkit-appearance: none;
+    appearance: none;
+} */
 .gridContainer{
     display: flex;
     flex-direction: column;
@@ -10,10 +14,10 @@
     width: 80%;
 }
 .searchBarContainer{
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: rgb(245, 245, 245);
     border: 1px solid rgb(200, 200, 200);
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -24,14 +28,38 @@
     border: none;
     width: 100%;
 }
-input:focus{
+input:focus, select:focus{
     outline: none;
 }
 .fa-search{
     color: rgb(100, 100, 100);
 }
+.searchRight{
+    display: flex;
+    gap: 20px
+}
 #matvarekjede{
     display: none;
+}
+#sortering, #filter{
+    border-radius: 10px;
+    padding: 0 10px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(200, 200, 200);
+}
+#filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.square{
+    height: 3px;
+    background-color: black;
+    width: 18px;
 }
 .matvareContainer{
     width: 80%;
@@ -41,8 +69,9 @@ input:focus{
     gap: 25px;
 }
 .card{
+    /* box-shadow: 0px 2px 8px #9fcece, 2px 0px 8px #d3aacb; */
     box-shadow: 0px 0px 8px rgb(160, 160, 160);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10%;
     text-decoration: none;
     color: black;
