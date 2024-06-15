@@ -23,6 +23,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
         let valgtSort = event.target.value
 
         setSorting(valgtSort)
+        console.log(sorting)
     }
 
     const handleClick = (data) => {
@@ -68,6 +69,14 @@ export default function Main({ data, valgtVare, setValgtVare }) {
             </div>
             {burgerToggle && 
                 <div className='filtersContainer'>
+                    <div className='filterSelectContainer'>
+                        <select className='filterSelect'>
+                            <option>Velg katogori</option>
+                        </select>
+                        <select className='filterSelect'>
+                            <option>Velg Merkevare</option>
+                        </select>
+                    </div>
                     <div className='rangeContainer'>
                         <div>
                             <span>Laveste pris</span><input className='numberInput' type='number' />
@@ -96,12 +105,12 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                           t.place === value.place && t.name === value.name
                         ))
                     )
-                    .sort(items => (
-                        sorting === 'lavestePris' ? console.log('laveste pris') 
-                        : sorting === 'hoyestePris' ? console.log('høyeste pris')
-                        : sorting === 'merkevare' ? console.log('matvare')
-                        : sorting === 'matvarekjede' ? console.log('matvarekjede')
-                        : console.log('no sorting')
+                    .sort((a, b) => (
+                        sorting === 'lavestePris' ? a.current_price - b.current_price
+                        : sorting === 'hoyestePris' ? b.current_price - a.current_price
+                        : sorting === 'merkevare' ? (a.brand || '').localeCompare(b.brand || '')
+                        : sorting === 'matvarekjede' ? (a.store.name || '').localeCompare(b.store.name || '')
+                        : console.log(data)
                     ))
                     .map(filteredData => (
                         <Link to='/vare' className='card' key={filteredData.id}>

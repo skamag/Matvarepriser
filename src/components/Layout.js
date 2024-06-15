@@ -9,7 +9,7 @@ export default function Layout() {
                     {/* <h1 className="header">Matvarepriser</h1> */}
                         <div className='logo'>
                             <img className='logo-img' src={logoImg} alt='logoImg'></img>
-                            <h2 className='logo-text main-logo-text'>Matvarepriser</h2>
+                            <h2 className='logo-text main-logo-text'>Dagligvarepriser</h2>
                             <h2 className='logo-text alternate-logo-text'>Matinnhold</h2>
                         </div>
                     </Link>
