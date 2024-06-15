@@ -41,7 +41,7 @@ input:focus, select:focus{
 #matvarekjede{
     display: none;
 }
-#sortering, #filter{
+#sortering, #filter, .filterSelect, .numberInput{
     border-radius: 10px;
     padding: 0 10px;
     background-color: rgb(245, 245, 245);
@@ -76,12 +76,17 @@ input:focus, select:focus{
     display: flex;
     gap: 20px;
 }
+.filtersContainer span{
+    display: flex;
+    align-items: center;
+}
 .rangeContainer div{
     display: flex;
     gap: 10px;
 }
 .numberInput{
     width: 30px;
+    padding: 10px;
 }
 .matvareContainer{
     width: 80%;
@@ -140,6 +145,10 @@ img{
 @media screen and (max-width: 400px){
     .matvareContainer{
         grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .filtersContainer, .filterSelectContainer{
+        flex-direction: column;
+        gap: 20px;
     }
 }
 .line1-toggle{
