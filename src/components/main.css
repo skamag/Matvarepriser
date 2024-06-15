@@ -47,7 +47,7 @@ input:focus, select:focus{
     background-color: rgb(245, 245, 245);
     border: 1px solid rgb(200, 200, 200);
 }
-#filter{
+#burger{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,10 +56,26 @@ input:focus, select:focus{
     font-size: 14px;
     cursor: pointer;
 }
-.square{
+#burger div{
     height: 3px;
     background-color: black;
     width: 18px;
+    transition: all 0.3s ease;
+}
+.filtersContainer{
+    padding: 20px 0;
+    width: 80%;
+}
+.rangeContainer{
+    display: flex;
+    gap: 20px;
+}
+.rangeContainer div{
+    display: flex;
+    gap: 10px;
+}
+.numberInput{
+    width: 30px;
 }
 .matvareContainer{
     width: 80%;
@@ -108,17 +124,24 @@ img{
     justify-content: flex-end;
 }
 @media screen and (max-width: 800px){
-    .matvareContainer{
+    .matvareContainer, .searchContainer, .filtersContainer{
         width: 90%;
+    }
+    .matvareContainer{
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 @media screen and (max-width: 400px){
-    .searchContainer{
-        width: 90%;
-    }
     .matvareContainer{
-        width: 90%;
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
+}
+.line1-toggle{
+    transform: rotate(-45deg) translate(-4px,5px);
+}
+.line2-toggle{
+    opacity: 0;
+}
+.line3-toggle{
+    transform: rotate(45deg) translate(-4px,-4px);
 }

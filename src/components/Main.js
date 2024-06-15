@@ -7,6 +7,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
     const [searchText, setSearchText] = useState('')
     const [matvarekjede, setMatvarekjede] = useState('')
     const [sorting, setSorting] = useState('')
+    const [burgerToggle, setBurgerToggle] = useState(false)
 
     const handleSearch = event => {
         let text = event.target.value
@@ -26,6 +27,11 @@ export default function Main({ data, valgtVare, setValgtVare }) {
 
     const handleClick = (data) => {
         setValgtVare(data.name)
+    }
+
+    const toggleBurger = () => {
+        burgerToggle ? setBurgerToggle(false) : setBurgerToggle(true)
+        console.log(burgerToggle)
     }
 
     return(
@@ -53,13 +59,26 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                         <option value={'merkevare'}>Merkevare</option>
                         <option value={'matvarekjede'}>Matvarekjede</option>
                     </select>
-                    <div id='filter'>
-                        <div className='square'></div>
-                        <div className='square'></div>
-                        <div className='square'></div>
+                    <div id='burger' onClick={toggleBurger}>
+                        <div className={burgerToggle ? 'line1-toggle' : ''}></div>
+                        <div className={burgerToggle ? 'line2-toggle' : ''}></div>
+                        <div className={burgerToggle ? 'line3-toggle' : ''}></div>
                     </div>
                 </div>
             </div>
+            {burgerToggle && 
+                <div className='filtersContainer'>
+                    <div className='rangeContainer'>
+                        <div>
+                            <span>Laveste pris</span><input className='numberInput' type='number' />
+                        </div>
+                        <div>
+                            <span>Høyeste pris</span><input className='numberInput' type='number' />
+                        </div>
+                    </div>
+                    
+                </div>
+            }
             <div className='matvareContainer'>
                 {/* {matvarekjede === '' ?
                     data.filter(data => data.nam)
