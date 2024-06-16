@@ -1,40 +1,77 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./main.css";
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import "./main.css"
 // import './gptStyling.css'
 
 export default function Main({ data, valgtVare, setValgtVare }) {
-  const [searchText, setSearchText] = useState("");
-  const [matvarekjede, setMatvarekjede] = useState("");
-  const [sorting, setSorting] = useState("");
-  const [burgerToggle, setBurgerToggle] = useState(false);
-  const [kategori, setKategori] = useState("");
+  const [searchText, setSearchText] = useState("")
+  const [matvarekjede, setMatvarekjede] = useState("")
+  const [sorting, setSorting] = useState("")
+  const [burgerToggle, setBurgerToggle] = useState(false)
+  const [kategori, setKategori] = useState("")
+  const [merkevare, setMerkevare] = useState("")
+  const [prisLav, setPrisLav] = useState(0)
+  const [prisHoy, setPrisHoy] = useState(0)
+
+  const uniqueCategoryNames = new Set()
+  const uniqueBrandNames = new Set()
+
+  useEffect(() => {
+    if (data && data.data) {
+      // Assuming each item in data.data has a property `current_price`
+      const highest = data.data.reduce((max, item) => {
+        return item.current_price > max ? item.current_price : max
+      }, 0)
+      setPrisHoy(highest)
+    }
+  }, [data])
 
   const handleSearch = (event) => {
-    let text = event.target.value;
-    setSearchText(text);
-  };
+    let text = event.target.value
+    setSearchText(text)
+  }
 
   const handleSelectMatvarekjede = (event) => {
-    let kjede = event.target.value;
-    setMatvarekjede(kjede);
-  };
+    let kjede = event.target.value
+    setMatvarekjede(kjede)
+  }
 
   const handleSort = (event) => {
-    let valgtSort = event.target.value;
+    let valgtSort = event.target.value
 
-    setSorting(valgtSort);
-    // console.log(sorting)
-  };
+    setSorting(valgtSort)
+  }
 
   const handleClick = (data) => {
-    setValgtVare(data.name);
-  };
+    setValgtVare(data.name)
+  }
 
   const toggleBurger = () => {
-    burgerToggle ? setBurgerToggle(false) : setBurgerToggle(true);
-    // console.log(burgerToggle)
-  };
+    burgerToggle ? setBurgerToggle(false) : setBurgerToggle(true)
+  }
+
+  const handleSelectCategory = (event) => {
+    let category = event.target.value
+    setKategori(category)
+    console.log(category)
+  }
+
+  const handleSelectBrand = (event) => {
+    let brand = event.target.value
+    setMerkevare(brand)
+  }
+
+  const handleChangePrisLav = (event) => {
+    let pris = event.target.value
+    pris >= 0 ? setPrisLav(pris) : setPrisLav("")
+    console.log(prisLav)
+  }
+
+  const handleChangePrisHoy = (event) => {
+    let pris = event.target.value
+    pris >= 0 ? setPrisHoy(pris) : setPrisHoy("")
+    console.log(prisHoy)
+  }
 
   return (
     <main className="gridContainer">
@@ -81,22 +118,57 @@ export default function Main({ data, valgtVare, setValgtVare }) {
       {burgerToggle && (
         <div className="filtersContainer">
           <div className="filterSelectContainer">
-            <select className="filterSelect">
-              <option>Velg katogori</option>
-              {data.data.map((data) => console.log(data.category))}
+            <select className="filterSelect" onChange={handleSelectCategory}>
+              <option>Velg kategori</option>
+              {data &&
+                data.data &&
+                data.data.map(
+                  (dataItem) =>
+                    dataItem.category &&
+                    dataItem.category.map((item) => {
+                      // Check if the item name is already in the Set
+                      if (uniqueCategoryNames.has(item.name)) {
+                        return null // If it is, skip rendering this item
+                      }
+                      // If not, add it to the Set and render it
+                      uniqueCategoryNames.add(item.name)
+                      return <option key={item.name}>{item.name}</option>
+                    })
+                )}
             </select>
-            <select className="filterSelect">
-              <option>Velg Merkevare</option>
+            <select className="filterSelect" onChange={handleSelectBrand}>
+              <option>Velg merkevare</option>
+              {data &&
+                data.data &&
+                data.data.map((item) => {
+                  // Check if the item name is already in the Set
+                  if (uniqueBrandNames.has(item.brand)) {
+                    return null // If it is, skip rendering this item
+                  } else if (item.brand === null) return null
+                  // If not, add it to the Set and render it
+                  uniqueBrandNames.add(item.brand)
+                  return <option key={item.brand}>{item.brand}</option>
+                })}
             </select>
           </div>
           <div className="rangeContainer">
             <div>
               <span>Laveste pris</span>
-              <input className="numberInput" type="number" />
+              <input
+                className="numberInput"
+                type="number"
+                value={prisLav && prisLav}
+                onChange={handleChangePrisLav}
+              />
             </div>
             <div>
               <span>Høyeste pris</span>
-              <input className="numberInput" type="number" />
+              <input
+                className="numberInput"
+                type="number"
+                value={prisHoy && prisHoy}
+                onChange={handleChangePrisHoy}
+              />
             </div>
           </div>
         </div>
@@ -133,16 +205,44 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                     (t) => t.place === value.place && t.name === value.name
                   )
               )
-              .sort((a, b) =>
-                sorting === "lavestePris"
-                  ? a.current_price - b.current_price
-                  : sorting === "hoyestePris"
-                  ? b.current_price - a.current_price
-                  : sorting === "merkevare"
-                  ? (a.brand || "").localeCompare(b.brand || "")
-                  : sorting === "matvarekjede"
-                  ? (a.store.name || "").localeCompare(b.store.name || "")
-                  : console.log("test")
+              .sort((a, b) => {
+                if (sorting === "lavestePris") {
+                  return a.current_price - b.current_price
+                } else if (sorting === "hoyestePris") {
+                  return b.current_price - a.current_price
+                } else if (sorting === "merkevare") {
+                  return (a.brand || "").localeCompare(b.brand || "")
+                } else if (sorting === "matvarekjede") {
+                  return (a.store.name || "").localeCompare(b.store.name || "")
+                } else {
+                  return 0
+                }
+              })
+              .filter(
+                kategori !== ("" || "Velg kategori")
+                  ? (item) =>
+                      item.category &&
+                      item.category.some((cat) =>
+                        cat.name.toLowerCase().includes(kategori.toLowerCase())
+                      )
+                  : () => true
+              )
+              .filter(
+                merkevare !== ("" || "Velg merkevare")
+                  ? (item) =>
+                      item.brand &&
+                      item.brand.toLowerCase().includes(merkevare.toLowerCase())
+                  : () => true
+              )
+              .filter(
+                prisLav !== ""
+                  ? (item) => item.current_price >= prisLav
+                  : () => true
+              )
+              .filter(
+                prisHoy !== ""
+                  ? (item) => item.current_price <= prisHoy
+                  : () => true
               )
               .map((filteredData) => (
                 <Link to="/vare" className="card" key={filteredData.id}>
@@ -159,18 +259,16 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                     <div className="descriptionContainer">
                       <span>{filteredData.name}</span>
                       {/* {data.data.filter(data.name.includes(filteredData.name)).map(newData => (
-                                        <span>{newData.store.name} - <b>{newData.current_price} kr</b></span>
-                                    ))} */}
+                              <span>{newData.store.name} - <b>{newData.current_price} kr</b></span>
+                          ))} */}
                       {/* <span>{filteredData.store.name} - <b>{filteredData.current_price} kr</b></span> */}
                     </div>
                   </article>
                 </Link>
               ))
           : "Loading..."}
+        {console.log(data)}
       </div>
     </main>
-  );
+  )
 }
-console.log("prettier");
-
-<div>newcode</div>;
