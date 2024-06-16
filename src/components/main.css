@@ -15,7 +15,7 @@
 }
 .searchBarContainer{
     padding: 10px 10px;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     display: flex;
@@ -24,7 +24,6 @@
     gap: 10px;
 }
 .searchContainer input{
-    background-color: rgb(245, 245, 245);
     border: none;
     width: 100%;
 }
@@ -44,7 +43,7 @@ input:focus, select:focus{
 #sortering, #filter, .filterSelect, .numberInput{
     border-radius: 10px;
     padding: 0 10px;
-    background-color: rgb(245, 245, 245);
+    background-color: white;
     border: 1px solid rgb(200, 200, 200);
 }
 #burger{
@@ -55,6 +54,10 @@ input:focus, select:focus{
     gap: 3px;
     font-size: 14px;
     cursor: pointer;
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 0 10px;
+    border-radius: 10px;
 }
 #burger div{
     height: 3px;
@@ -66,7 +69,7 @@ input:focus, select:focus{
     padding: 20px 0;
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    gap: 30px;
 }
 .filterSelectContainer{
     display: flex;
@@ -85,7 +88,7 @@ input:focus, select:focus{
     gap: 10px;
 }
 .numberInput{
-    width: 30px;
+    width: 50px;
     padding: 10px;
 }
 .matvareContainer{
@@ -96,15 +99,17 @@ input:focus, select:focus{
     gap: 25px;
 }
 .card{
+    background-color: white;
     /* box-shadow: 0px 2px 8px #9fcece, 2px 0px 8px #d3aacb; */
-    box-shadow: 0px 0px 8px rgb(160, 160, 160);
+    /* box-shadow: 0px 0px 8px rgb(200, 200, 200); */
     border-radius: 10px;
     padding: 10%;
     text-decoration: none;
     color: black;
+    border: 1px solid rgb(200, 200, 200);
 }
 .card:hover{
-    box-shadow: 0px 0px 8px rgb(100, 100, 100);
+    box-shadow: 0px 0px 8px rgb(200, 200, 200);
 }
 .card:focus{
     box-shadow: 0px 0px 8px rgb(160, 160, 160);
@@ -152,11 +157,11 @@ img{
     }
 }
 .line1-toggle{
-    transform: rotate(-45deg) translate(-4px,5px);
+    transform: rotate(-45deg) translate(-4px,4.5px);
 }
 .line2-toggle{
     opacity: 0;
 }
 .line3-toggle{
-    transform: rotate(45deg) translate(-4px,-4px);
+    transform: rotate(45deg) translate(-4px,-4.5px);
 }

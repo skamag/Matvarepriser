@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
-import logoImg from '../images/bananaTransparent.png'
+// import logoImg from '../images/bananaTransparent.png'
+import logoImg from '../images/bananaCoin.webp'
 
 export default function Layout() {
     return(

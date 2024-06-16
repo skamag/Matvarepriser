@@ -8,6 +8,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
     const [matvarekjede, setMatvarekjede] = useState('')
     const [sorting, setSorting] = useState('')
     const [burgerToggle, setBurgerToggle] = useState(false)
+    const [kategori, setKategori] = useState('')
 
     const handleSearch = event => {
         let text = event.target.value
@@ -23,7 +24,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
         let valgtSort = event.target.value
 
         setSorting(valgtSort)
-        console.log(sorting)
+        // console.log(sorting)
     }
 
     const handleClick = (data) => {
@@ -32,7 +33,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
 
     const toggleBurger = () => {
         burgerToggle ? setBurgerToggle(false) : setBurgerToggle(true)
-        console.log(burgerToggle)
+        // console.log(burgerToggle)
     }
 
     return(
@@ -72,6 +73,9 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                     <div className='filterSelectContainer'>
                         <select className='filterSelect'>
                             <option>Velg katogori</option>
+                            {data.data.map(data => (
+                                console.log(data.category)
+                            ))}
                         </select>
                         <select className='filterSelect'>
                             <option>Velg Merkevare</option>
@@ -85,7 +89,6 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                             <span>Høyeste pris</span><input className='numberInput' type='number' />
                         </div>
                     </div>
-                    
                 </div>
             }
             <div className='matvareContainer'>
@@ -110,7 +113,7 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                         : sorting === 'hoyestePris' ? b.current_price - a.current_price
                         : sorting === 'merkevare' ? (a.brand || '').localeCompare(b.brand || '')
                         : sorting === 'matvarekjede' ? (a.store.name || '').localeCompare(b.store.name || '')
-                        : console.log(data)
+                        : console.log('test')
                     ))
                     .map(filteredData => (
                         <Link to='/vare' className='card' key={filteredData.id}>
