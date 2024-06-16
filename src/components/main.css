@@ -2,166 +2,173 @@
     -webkit-appearance: none;
     appearance: none;
 } */
-.gridContainer{
-    display: flex;
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.searchContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.searchBarContainer {
+  padding: 10px 10px;
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.searchContainer input {
+  border: none;
+  width: 100%;
+}
+input:focus,
+select:focus {
+  outline: none;
+}
+.fa-search {
+  color: rgb(100, 100, 100);
+}
+.searchRight {
+  display: flex;
+  gap: 20px;
+}
+#matvarekjede {
+  display: none;
+}
+#sortering,
+#filter,
+.filterSelect,
+.numberInput {
+  border-radius: 10px;
+  padding: 0 10px;
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+}
+#burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+  padding: 0 10px;
+  border-radius: 10px;
+}
+#burger div {
+  height: 3px;
+  background-color: black;
+  width: 18px;
+  transition: all 0.3s ease;
+}
+.filtersContainer {
+  padding: 20px 0;
+  width: 80%;
+  display: flex;
+  gap: 30px;
+}
+.filterSelectContainer {
+  display: flex;
+  gap: 10px;
+}
+.rangeContainer {
+  display: flex;
+  gap: 20px;
+}
+.filtersContainer span {
+  display: flex;
+  align-items: center;
+}
+.rangeContainer div {
+  display: flex;
+  gap: 10px;
+}
+.numberInput {
+  width: 50px;
+  padding: 10px;
+}
+.matvareContainer {
+  width: 80%;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+}
+.card {
+  background-color: white;
+  /* box-shadow: 0px 2px 8px #9fcece, 2px 0px 8px #d3aacb; */
+  /* box-shadow: 0px 0px 8px rgb(200, 200, 200); */
+  border-radius: 10px;
+  padding: 10%;
+  text-decoration: none;
+  color: black;
+  border: 1px solid rgb(200, 200, 200);
+}
+.card:hover {
+  box-shadow: 0px 0px 8px rgb(200, 200, 200);
+}
+.card:focus {
+  box-shadow: 0px 0px 8px rgb(160, 160, 160);
+}
+.article {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+}
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+img {
+  max-width: 60%;
+  max-height: 100%;
+}
+.descriptionContainer {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 800px) {
+  .matvareContainer,
+  .searchContainer,
+  .filtersContainer {
+    width: 90%;
+  }
+  .matvareContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 400px) {
+  .matvareContainer {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .filtersContainer,
+  .filterSelectContainer {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.searchContainer{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
-.searchBarContainer{
-    padding: 10px 10px;
-    background-color: white;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-}
-.searchContainer input{
-    border: none;
-    width: 100%;
-}
-input:focus, select:focus{
-    outline: none;
-}
-.fa-search{
-    color: rgb(100, 100, 100);
-}
-.searchRight{
-    display: flex;
-    gap: 20px
-}
-#matvarekjede{
-    display: none;
-}
-#sortering, #filter, .filterSelect, .numberInput{
-    border-radius: 10px;
-    padding: 0 10px;
-    background-color: white;
-    border: 1px solid rgb(200, 200, 200);
-}
-#burger{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid rgb(200, 200, 200);
-    padding: 0 10px;
-    border-radius: 10px;
-}
-#burger div{
-    height: 3px;
-    background-color: black;
-    width: 18px;
-    transition: all 0.3s ease;
-}
-.filtersContainer{
-    padding: 20px 0;
-    width: 80%;
-    display: flex;
-    gap: 30px;
-}
-.filterSelectContainer{
-    display: flex;
-    gap: 10px;
-}
-.rangeContainer{
-    display: flex;
     gap: 20px;
+  }
 }
-.filtersContainer span{
-    display: flex;
-    align-items: center;
+.line1-toggle {
+  transform: rotate(-45deg) translate(-4px, 4.5px);
 }
-.rangeContainer div{
-    display: flex;
-    gap: 10px;
+.line2-toggle {
+  opacity: 0;
 }
-.numberInput{
-    width: 50px;
-    padding: 10px;
-}
-.matvareContainer{
-    width: 80%;
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 25px;
-}
-.card{
-    background-color: white;
-    /* box-shadow: 0px 2px 8px #9fcece, 2px 0px 8px #d3aacb; */
-    /* box-shadow: 0px 0px 8px rgb(200, 200, 200); */
-    border-radius: 10px;
-    padding: 10%;
-    text-decoration: none;
-    color: black;
-    border: 1px solid rgb(200, 200, 200);
-}
-.card:hover{
-    box-shadow: 0px 0px 8px rgb(200, 200, 200);
-}
-.card:focus{
-    box-shadow: 0px 0px 8px rgb(160, 160, 160);
-}
-.article{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 12px;
-}
-.imgContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-img{
-    max-width: 60%;
-    max-height: 100%;
-}
-.descriptionContainer{
-    height: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-@media screen and (max-width: 800px){
-    .matvareContainer, .searchContainer, .filtersContainer{
-        width: 90%;
-    }
-    .matvareContainer{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-@media screen and (max-width: 400px){
-    .matvareContainer{
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    .filtersContainer, .filterSelectContainer{
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-.line1-toggle{
-    transform: rotate(-45deg) translate(-4px,4.5px);
-}
-.line2-toggle{
-    opacity: 0;
-}
-.line3-toggle{
-    transform: rotate(45deg) translate(-4px,-4.5px);
+.line3-toggle {
+  transform: rotate(45deg) translate(-4px, -4.5px);
 }

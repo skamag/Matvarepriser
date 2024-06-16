@@ -1,40 +1,44 @@
-.valgtVareContainer{
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    width: 90%;
-    margin: 100px auto;
+.valgtVareContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+  padding: 100px 0;
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
 }
-.valgtVareHeader{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.valgtVareHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
 }
-.vareImage{
-    max-height: 200px;
+.vareImage {
+  max-height: 200px;
 }
-.priserContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.priserContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-.storeContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.storeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.storeLogoContainer{
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.storeLogoContainer {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.storeLogo{
-    box-shadow: 0 0 8px grey;
+.storeLogo {
+  box-shadow: 0 0 8px grey;
 }
-.bold{
-    font-weight: bold;
+.bold {
+  font-weight: bold;
 }
