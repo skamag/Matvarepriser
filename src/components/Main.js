@@ -222,7 +222,9 @@ export default function Main({ data, setValgtVare }) {
                       ></img>
                     </div>
                     <div className="descriptionContainer">
-                      <span>{filteredData.name}</span>
+                      <span>
+                        <h5>{filteredData.name}</h5>
+                      </span>
                       <div className="cardStores">
                         {data.data &&
                           data.data
