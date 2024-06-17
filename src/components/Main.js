@@ -16,9 +16,7 @@ export default function Main({ data, setValgtVare }) {
   const uniqueBrandNames = new Set()
 
   useEffect(() => {
-    {
-      console.log(data)
-    }
+    console.log(data)
 
     if (data && data.data) {
       const highest = data.data.reduce((max, item) => {
@@ -108,11 +106,9 @@ export default function Main({ data, setValgtVare }) {
                   (dataItem) =>
                     dataItem.category &&
                     dataItem.category.map((item) => {
-                      // Check if the item name is already in the Set
                       if (uniqueCategoryNames.has(item.name)) {
-                        return null // If it is, skip rendering this item
+                        return null
                       }
-                      // If not, add it to the Set and render it
                       uniqueCategoryNames.add(item.name)
                       return <option key={item.name}>{item.name}</option>
                     })
@@ -226,10 +222,44 @@ export default function Main({ data, setValgtVare }) {
                     </div>
                     <div className="descriptionContainer">
                       <span>{filteredData.name}</span>
-                      {/* {data.data.filter(data.name.includes(filteredData.name)).map(newData => (
-                              <span>{newData.store.name} - <b>{newData.current_price} kr</b></span>
-                          ))} */}
-                      {/* <span>{filteredData.store.name} - <b>{filteredData.current_price} kr</b></span> */}
+                      <div className="cardStores">
+                        {data.data &&
+                          data.data
+                            .filter(
+                              (item) =>
+                                item.name &&
+                                item.name
+                                  .toLowerCase()
+                                  .includes(filteredData.name.toLowerCase())
+                            )
+                            .map((currentItem) => (
+                              <>
+                                <img
+                                  className="cardStoreImg"
+                                  src={currentItem.store.logo}
+                                  alt={currentItem.store.name}
+                                ></img>
+                                <span className="cardStorePrice">
+                                  {currentItem.current_price}
+                                </span>
+                              </>
+                            ))}
+                      </div>
+
+                      {/* {data.data
+                        .filter(
+                          data.name.includes(filteredData.name.toLowerCase())
+                        )
+                        .map((newData) => (
+                          <span>
+                            {newData.store.name} -{" "}
+                            <b>{newData.current_price} kr</b>
+                          </span>
+                        ))} */}
+                      {/* <span>
+                        {filteredData.store.name} -{" "}
+                        <b>{filteredData.current_price} kr</b>
+                      </span> */}
                     </div>
                   </article>
                 </Link>

@@ -139,6 +139,24 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: baseline;
+  margin-top: 10px;
+}
+.cardStores {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+  width: 40px;
+}
+.cardStoreImg {
+  height: 100%;
+  box-shadow: 0 0 8px rgb(200, 200, 200);
+}
+.cardStorePrice {
+  margin-right: 5px;
+  text-wrap: nowrap;
 }
 @media screen and (max-width: 1200px) {
   .matvareContainer {
@@ -155,7 +173,7 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .matvareContainer {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
