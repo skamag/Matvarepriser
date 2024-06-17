@@ -20,6 +20,7 @@
 }
 .logo-img {
   height: 75%;
+  display: none;
 }
 .main-logo-text {
   display: block;
@@ -40,10 +41,5 @@
 @media screen and (max-width: 800px) {
   .headerContainer {
     width: 90%;
-  }
-}
-@media screen and (max-width: 400px) {
-  .loginContainer {
-    display: none;
   }
 }
