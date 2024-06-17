@@ -38,9 +38,6 @@ select:focus {
   display: flex;
   gap: 20px;
 }
-#matvarekjede {
-  display: none;
-}
 #sortering,
 #filter,
 .filterSelect,
@@ -142,6 +139,11 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+@media screen and (max-width: 1200px) {
+  .matvareContainer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 @media screen and (max-width: 800px) {
   .matvareContainer,

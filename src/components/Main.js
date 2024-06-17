@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import "./main.css"
-// import './gptStyling.css'
+// import './alternateStyling.css'
 
-export default function Main({ data, valgtVare, setValgtVare }) {
+export default function Main({ data, setValgtVare }) {
   const [searchText, setSearchText] = useState("")
-  const [matvarekjede, setMatvarekjede] = useState("")
   const [sorting, setSorting] = useState("")
   const [burgerToggle, setBurgerToggle] = useState(false)
   const [kategori, setKategori] = useState("")
@@ -17,8 +16,11 @@ export default function Main({ data, valgtVare, setValgtVare }) {
   const uniqueBrandNames = new Set()
 
   useEffect(() => {
+    {
+      console.log(data)
+    }
+
     if (data && data.data) {
-      // Assuming each item in data.data has a property `current_price`
       const highest = data.data.reduce((max, item) => {
         return item.current_price > max ? item.current_price : max
       }, 0)
@@ -31,14 +33,8 @@ export default function Main({ data, valgtVare, setValgtVare }) {
     setSearchText(text)
   }
 
-  const handleSelectMatvarekjede = (event) => {
-    let kjede = event.target.value
-    setMatvarekjede(kjede)
-  }
-
   const handleSort = (event) => {
     let valgtSort = event.target.value
-
     setSorting(valgtSort)
   }
 
@@ -53,7 +49,6 @@ export default function Main({ data, valgtVare, setValgtVare }) {
   const handleSelectCategory = (event) => {
     let category = event.target.value
     setKategori(category)
-    console.log(category)
   }
 
   const handleSelectBrand = (event) => {
@@ -64,13 +59,11 @@ export default function Main({ data, valgtVare, setValgtVare }) {
   const handleChangePrisLav = (event) => {
     let pris = event.target.value
     pris >= 0 ? setPrisLav(pris) : setPrisLav("")
-    console.log(prisLav)
   }
 
   const handleChangePrisHoy = (event) => {
     let pris = event.target.value
     pris >= 0 ? setPrisHoy(pris) : setPrisHoy("")
-    console.log(prisHoy)
   }
 
   return (
@@ -89,17 +82,6 @@ export default function Main({ data, valgtVare, setValgtVare }) {
           </div>
         </div>
         <div className="searchRight">
-          <select
-            name="matvarekjede"
-            id="matvarekjede"
-            onChange={handleSelectMatvarekjede}
-          >
-            <option value={""}>Alle matvarekjeder</option>
-            {/* <option value={''} disabled selected>Matvarekjede</option> */}
-            <option value={"Meny"}>Meny</option>
-            <option value={"SPAR"}>Spar</option>
-            <option value={"Joker"}>Joker</option>
-          </select>
           <select name="sortering" id="sortering" onChange={handleSort}>
             <option value={""}>Sorter</option>
             {/* <option value={''} disabled selected>Matvarekjede</option> */}
@@ -141,11 +123,9 @@ export default function Main({ data, valgtVare, setValgtVare }) {
               {data &&
                 data.data &&
                 data.data.map((item) => {
-                  // Check if the item name is already in the Set
                   if (uniqueBrandNames.has(item.brand)) {
-                    return null // If it is, skip rendering this item
+                    return null
                   } else if (item.brand === null) return null
-                  // If not, add it to the Set and render it
                   uniqueBrandNames.add(item.brand)
                   return <option key={item.brand}>{item.brand}</option>
                 })}
@@ -174,29 +154,17 @@ export default function Main({ data, valgtVare, setValgtVare }) {
         </div>
       )}
       <div className="matvareContainer">
-        {/* {matvarekjede === '' ?
-                    data.filter(data => data.nam)
-                } */}
-
-        {data /* && searchText !== '' */
+        {data
           ? data.data
               .filter(
-                matvarekjede !== ""
-                  ? (data) =>
-                      data.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase()) &&
-                      data.store.name === matvarekjede
-                  : (data) =>
-                      data.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase()) ||
-                      data.store.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase()) ||
-                      data.store.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase())
+                (data) =>
+                  data.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                  data.store.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase()) ||
+                  data.store.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
               )
               .filter(
                 (value, index, self) =>
@@ -267,7 +235,6 @@ export default function Main({ data, valgtVare, setValgtVare }) {
                 </Link>
               ))
           : "Loading..."}
-        {console.log(data)}
       </div>
     </main>
   )

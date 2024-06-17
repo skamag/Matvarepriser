@@ -1,4 +1,4 @@
-import "./vare.css";
+import "./vare.css"
 
 export default function Vare({ data, valgtVare }) {
   const filteredItems =
@@ -6,13 +6,13 @@ export default function Vare({ data, valgtVare }) {
       ? data.data.filter((item) =>
           item.name.toLowerCase().includes(valgtVare.toLowerCase())
         )
-      : [];
+      : []
 
   const sortedItems = filteredItems.sort(
     (a, b) => a.current_price - b.current_price
-  );
+  )
   const lowestPrice =
-    sortedItems.length > 0 ? sortedItems[0].current_price : null;
+    sortedItems.length > 0 ? sortedItems[0].current_price : null
 
   return (
     <article className="valgtVareContainer">
@@ -67,5 +67,5 @@ export default function Vare({ data, valgtVare }) {
           : "Loading..."}
       </div>
     </article>
-  );
+  )
 }
