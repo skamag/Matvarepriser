@@ -1,3 +1,4 @@
+import React from "react"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import "./main.css"
@@ -233,7 +234,7 @@ export default function Main({ data, setValgtVare }) {
                                   .includes(filteredData.name.toLowerCase())
                             )
                             .map((currentItem) => (
-                              <>
+                              <React.Fragment key={currentItem.id}>
                                 <img
                                   className="cardStoreImg"
                                   src={currentItem.store.logo}
@@ -242,7 +243,7 @@ export default function Main({ data, setValgtVare }) {
                                 <span className="cardStorePrice">
                                   {currentItem.current_price}
                                 </span>
-                              </>
+                              </React.Fragment>
                             ))}
                       </div>
 
