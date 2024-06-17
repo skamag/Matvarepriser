@@ -45,9 +45,6 @@ export default function Vare({ data, valgtVare }) {
                   {data && valgtVare !== ""
                     ? sortedItems.map((filteredItem) => (
                         <div key={filteredItem.id} className={"storeContainer"}>
-                          {/* {console.log(filteredItem.current_price)} */}
-                          {/* {setPriser(...priser, filteredItem.current_price)} */}
-                          {/* <h1 key={filteredItem.id}>{filteredItem.name}</h1> */}
                           <span
                             className={
                               filteredItem.current_price === lowestPrice
@@ -84,7 +81,7 @@ export default function Vare({ data, valgtVare }) {
                 </div>
                 <div>
                   <p>
-                    <b>Ingredienser</b>
+                    <b>Innhold</b>
                   </p>
                   <p>
                     {filteredItem.ingredients

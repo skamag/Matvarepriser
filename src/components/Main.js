@@ -246,21 +246,6 @@ export default function Main({ data, setValgtVare }) {
                               </React.Fragment>
                             ))}
                       </div>
-
-                      {/* {data.data
-                        .filter(
-                          data.name.includes(filteredData.name.toLowerCase())
-                        )
-                        .map((newData) => (
-                          <span>
-                            {newData.store.name} -{" "}
-                            <b>{newData.current_price} kr</b>
-                          </span>
-                        ))} */}
-                      {/* <span>
-                        {filteredData.store.name} -{" "}
-                        <b>{filteredData.current_price} kr</b>
-                      </span> */}
                     </div>
                   </article>
                 </Link>
