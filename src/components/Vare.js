@@ -45,22 +45,24 @@ export default function Vare({ data, valgtVare }) {
                   {data && valgtVare !== ""
                     ? sortedItems.map((filteredItem) => (
                         <div key={filteredItem.id} className={"storeContainer"}>
-                          <span
-                            className={
-                              filteredItem.current_price === lowestPrice
-                                ? "bold"
-                                : ""
-                            }
-                          >
-                            {filteredItem.current_price} kr
-                          </span>
-                          <div className="storeLogoContainer">
-                            <img
-                              className={"storeLogo"}
-                              src={filteredItem.store.logo}
-                              alt={filteredItem.store.name}
-                            />
-                          </div>
+                          <a href={filteredItem.url}>
+                            <div className="storeLogoContainer">
+                              <img
+                                className={"storeLogo"}
+                                src={filteredItem.store.logo}
+                                alt={filteredItem.store.name}
+                              />
+                            </div>
+                            <span
+                              className={
+                                filteredItem.current_price === lowestPrice
+                                  ? "bold"
+                                  : ""
+                              }
+                            >
+                              {filteredItem.current_price} kr
+                            </span>
+                          </a>
                         </div>
                       ))
                     : valgtVare === ""
