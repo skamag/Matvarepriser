@@ -215,6 +215,19 @@ export default function Main({ data, setValgtVare, page, pageDown, pageUp }) {
                     className="article"
                     onClick={() => handleClick(filteredData)}
                   >
+                    <div className="labelsContainer">
+                      {filteredData.labels.map((label) => (
+                        <div key={label.name}>
+                          {label.icon.png && (
+                            <img
+                              className="labelImg"
+                              src={label.icon.png}
+                              alt={label.name}
+                            ></img>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                     <div className="imgContainer">
                       <img
                         src={filteredData.image}

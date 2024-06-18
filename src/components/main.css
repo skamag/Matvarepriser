@@ -125,6 +125,12 @@ select:focus {
   gap: 10px;
   font-size: 12px;
 }
+.labelsContainer {
+  display: flex;
+}
+.labelImg {
+  width: 30px;
+}
 .imgContainer {
   display: flex;
   justify-content: center;
