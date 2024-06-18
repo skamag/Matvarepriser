@@ -7,17 +7,30 @@ import "./App.css"
 
 function App() {
   const [data, setData] = useState(null)
+  const [page, setPage] = useState(1)
+
+  const pageDown = () => {
+    setPage((page) => page - 1)
+    console.log(page)
+  }
+
+  const pageUp = () => {
+    setPage((page) => page + 1)
+    console.log(page)
+  }
 
   const KEY = "LmOFSdN8MdRSiZOVBqFg4uP6uKdvBKpuoHTdnkiW"
 
   useEffect(() => {
     const headers = { Authorization: "Bearer " + KEY }
 
-    fetch("https://kassal.app/api/v1/products?size=100", { headers })
+    fetch(`https://kassal.app/api/v1/products?size=100&page=${page}`, {
+      headers,
+    })
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))
-  }, [])
+  }, [page])
 
   const [valgtVare, setValgtVare] = useState("")
 
@@ -34,6 +47,9 @@ function App() {
                   setData={setData}
                   valgtVare={valgtVare}
                   setValgtVare={setValgtVare}
+                  page={page}
+                  pageDown={pageDown}
+                  pageUp={pageUp}
                 />
               }
             />

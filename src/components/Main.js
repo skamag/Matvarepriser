@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./main.css"
 // import './alternateStyling.css'
 
-export default function Main({ data, setValgtVare }) {
+export default function Main({ data, setValgtVare, page, pageDown, pageUp }) {
   const [searchText, setSearchText] = useState("")
   const [sorting, setSorting] = useState("")
   const [burgerToggle, setBurgerToggle] = useState(false)
@@ -253,6 +253,11 @@ export default function Main({ data, setValgtVare }) {
                 </Link>
               ))
           : "Loading..."}
+      </div>
+      <div className="buttonsContainer">
+        <button onClick={pageDown}>Page down</button>
+        <span>Side {page}</span>
+        <button onClick={pageUp}>Page up</button>
       </div>
     </main>
   )
