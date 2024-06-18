@@ -10,7 +10,7 @@ function App() {
   const [page, setPage] = useState(1)
 
   const pageDown = () => {
-    setPage((page) => page - 1)
+    page > 1 && setPage((page) => page - 1)
     console.log(page)
   }
 
