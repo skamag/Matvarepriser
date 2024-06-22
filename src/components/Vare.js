@@ -33,6 +33,15 @@ export default function Vare({ data, valgtVare }) {
             <React.Fragment key={filteredItem.id}>
               <div>
                 <div className="valgtVareHeader">
+                  {/* <div className="vareLabels">
+                    {filteredItem.labels &&
+                      filteredItem.labels.map((label) => (
+                        <img
+                          className="vareLabelImg"
+                          src={label.icon.png}
+                        ></img>
+                      ))}
+                  </div> */}
                   <img
                     key={filteredItem.id}
                     className="vareImage"
@@ -90,6 +99,12 @@ export default function Vare({ data, valgtVare }) {
                       ? filteredItem.ingredients
                       : "Ingen info"}
                   </p>
+                </div>
+                <div className="vareLabels">
+                  {filteredItem.labels &&
+                    filteredItem.labels.map((label) => (
+                      <img className="vareLabelImg" src={label.icon.png}></img>
+                    ))}
                 </div>
               </div>
             </React.Fragment>

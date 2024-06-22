@@ -18,6 +18,12 @@
   gap: 20px;
   background-color: white;
 }
+.vareLabels {
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
 .vareImage {
   max-height: 200px;
 }
