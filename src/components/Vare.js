@@ -103,7 +103,11 @@ export default function Vare({ data, valgtVare }) {
                 <div className="vareLabels">
                   {filteredItem.labels &&
                     filteredItem.labels.map((label) => (
-                      <img className="vareLabelImg" src={label.icon.png}></img>
+                      <img
+                        className="vareLabelImg"
+                        src={label.icon.png}
+                        alt={label.names}
+                      ></img>
                     ))}
                 </div>
               </div>
